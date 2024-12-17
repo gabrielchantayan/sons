@@ -96,7 +96,7 @@ const [meander, set_meander] = useState<Record<string, boolean>>({});
 					<p>{volume['subway']}</p>
 
 					<Button onClick={() => toggle_audio('subway')}>{playing['subway'] ? 'Stop' : 'Play'}</Button>
-					<audio id='subway' src='/subway_1.mp3' loop></audio>
+					<audio id='subway' src='/subway.mp3' loop></audio>
 					<div className='w-96'>
 						{' '}
 						<Slider
@@ -116,8 +116,10 @@ const [meander, set_meander] = useState<Record<string, boolean>>({});
 				<div className='mt-8 flex gap-4'>
 					<p>Rain</p>
 
+					<p>{volume['rain']}</p>
+
 					<Button onClick={() => toggle_audio('rain')}>{playing['rain'] ? 'Stop' : 'Play'}</Button>
-					<audio id='rain' src='/rain_1.mp3' loop></audio>
+					<audio id='rain' src='/rain.mp3' loop></audio>
 					<div className='w-96'>
 						{' '}
 						<Slider
@@ -135,8 +137,10 @@ const [meander, set_meander] = useState<Record<string, boolean>>({});
 				<div className='mt-8 flex gap-4'>
 					<p>Thunder</p>
 
+					<p>{volume['thunder']}</p>
+
 					<Button onClick={() => toggle_audio('thunder')}>{playing['thunder'] ? 'Stop' : 'Play'}</Button>
-					<audio id='thunder' src='/thunder_1.mp3' loop></audio>
+					<audio id='thunder' src='/thunder.mp3' loop></audio>
 					<div className='w-96'>
 						{' '}
 						<Slider
@@ -154,6 +158,8 @@ const [meander, set_meander] = useState<Record<string, boolean>>({});
 				<div className='mt-8 flex gap-4'>
 					<p>Seoul Cafe</p>
 
+					<p>{volume['seoul_cafe']}</p>
+
 					<Button onClick={() => toggle_audio('seoul_cafe')}>{playing['seoul_cafe'] ? 'Stop' : 'Play'}</Button>
 					<audio id='seoul_cafe' src='/seoul_cafe.mp3' loop></audio>
 					<div className='w-96'>
@@ -162,6 +168,27 @@ const [meander, set_meander] = useState<Record<string, boolean>>({});
 							defaultValue={[1]}
 							onValueChange={(v) => {
 								set_item_volume('seoul_cafe', v[0]);
+							}}
+							step={0.01}
+							min={0}
+							max={1}
+						/>
+					</div>
+				</div>
+
+				<div className='mt-8 flex gap-4'>
+					<p>Fireplace</p>
+
+					<p>{volume['fireplace']}</p>
+
+					<Button onClick={() => toggle_audio('fireplace')}>{playing['fireplace'] ? 'Stop' : 'Play'}</Button>
+					<audio id='fireplace' src='/fireplace.mp3' loop></audio>
+					<div className='w-96'>
+						{' '}
+						<Slider
+							defaultValue={[1]}
+							onValueChange={(v) => {
+								set_item_volume('fireplace', v[0]);
 							}}
 							step={0.01}
 							min={0}
