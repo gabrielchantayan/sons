@@ -23,13 +23,13 @@ const SoundItem = ({
 	set_item_volume: (audio_id: string, new_volume: number) => void;
 }) => {
 	return (
-		<div className='flex flex-row flex gap-4 items-center'>
-			<Button variant={'secondary'} className='w-56' onClick={() => toggle_audio(audio_id)}>
+		<div className='flex flex-col sm:flex-row flex gap-4 sm:items-center'>
+			<Button variant={'secondary'} className='w-full sm:w-56' onClick={() => toggle_audio(audio_id)}>
 				{audio_title} {playing ? <PauseIcon /> : <PlayIcon />}
 			</Button>
 			<audio id={audio_id} src={`/${audio_id}.mp3`} loop></audio>
 			{playing && (
-				<div className='w-96'>
+				<div className='w-full sm:w-96 mb-4 sm:mb-0'>
 					<Slider
 						value={[volume || 0.75]}
 						onValueChange={(v) => {
@@ -145,13 +145,13 @@ export default function Home() {
 	};
 
 	return (
-		<div className='grid grid-rows-[1fr_20px]  min-h-screen p-8 pb-10 gap-8 sm:p-20 sm:pb-10 font-[family-name:var(--font-geist-sans)]'>
+		<div className='grid grid-rows-[1fr_20px]  min-h-screen p-8 pt-15 pb-10 gap-8 sm:p-20 sm:pb-10 font-[family-name:var(--font-geist-sans)]'>
 			<main className='flex flex-col '>
-				<h1 className='text-4xl font-bold'>sounds.gabech.com</h1>
-				<p className='mt-4 text-2xl'>Background music for your life</p>
+				<h1 className='sm:text-4xl text-3xl font-bold'>sounds.gabech.com</h1>
+				<p className='sm:mt-4 mt-2 text-lg sm:text-2xl'>Background music for your life</p>
 
 				<div className='mt-4 flex gap-4'>
-					<Button className='w-36' variant={'secondary'} onClick={pause_all}>
+					<Button className='w-full sm:w-36' variant={'secondary'} onClick={pause_all}>
 						Pause all
 					</Button>
 
@@ -240,7 +240,7 @@ export default function Home() {
 					</div>
 				</div>
 			</main>
-			<footer className='flex flex-row gap-4 text-sm'>
+			<footer className='flex flex-row gap-4 text-sm mt-6 sm:mt-0 items-center justify-center sm:items-start sm:justify-start'>
 				<p className='text-sm'>
 					Made by{' '}
 					<a
