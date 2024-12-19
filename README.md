@@ -1,5 +1,6 @@
 # Sons
-##### ALPHA BUILDS
+
+[View](https://sounds.gabech.com)
 
 French for "Sounds", sons is a nextjs app for background audio for your day.
 

@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Sons",
-  description: "Sounds",
+  title: "Sounds",
+  description: "Background music for your life",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
 		<html lang='en'>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-stone-100 dark:bg-stone-900`}>
+			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
 					{children}
 				</ThemeProvider>
