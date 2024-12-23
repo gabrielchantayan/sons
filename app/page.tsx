@@ -4,7 +4,7 @@ import { Slider } from '@/components/ui/slider';
 import { PauseIcon, PlayIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 
-const header = 'text-2xl font-bold mb-2';
+const header = 'text-2xl font-bold mb-2 font-[family-name:var(--font-pp-editorial-new-ultralight)]';
 const section = 'flex flex-col gap-4';
 
 const SoundItem = ({
@@ -24,7 +24,7 @@ const SoundItem = ({
 }) => {
 	return (
 		<div className='flex flex-col sm:flex-row flex gap-4 sm:items-center'>
-			<Button variant={'secondary'} className='w-full sm:w-56' onClick={() => toggle_audio(audio_id)}>
+			<Button variant={'default'} className='w-full sm:w-56' onClick={() => toggle_audio(audio_id)}>
 				{audio_title} {playing ? <PauseIcon /> : <PlayIcon />}
 			</Button>
 			<audio id={audio_id} src={`/${audio_id}.mp3`} loop></audio>
@@ -58,7 +58,6 @@ export default function Home() {
 
 	const toggle_audio = (audio_id: string) => {
 		// Play the sound here
-
 
 		const audio = document.getElementById(audio_id) as HTMLAudioElement;
 
@@ -135,8 +134,6 @@ export default function Home() {
 	};
 
 	const is_playing = (audio_id: string) => {
-;
-
 		const audio = typeof document !== 'undefined' && (document.getElementById(audio_id) as HTMLAudioElement);
 
 		if (!audio) return false;
@@ -147,11 +144,13 @@ export default function Home() {
 	return (
 		<div className='grid grid-rows-[1fr_20px]  min-h-screen p-8 pt-15 pb-10 gap-8 sm:p-20 sm:pb-10 font-[family-name:var(--font-geist-sans)]'>
 			<main className='flex flex-col '>
-				<h1 className='sm:text-4xl text-3xl font-bold'>sounds.gabech.com</h1>
-				<p className='sm:mt-4 mt-2 text-lg sm:text-2xl'>Background music for your life</p>
+				<h1 className='sm:text-6xl text-3xl font-bold font-[family-name:var(--font-pp-editorial-new-ultralight)]'>
+					sounds.gabech.com
+				</h1>
+				<p className='sm:mt-1 mt-2 text-lg sm:text-2xl'>Background music for your life</p>
 
 				<div className='mt-4 flex gap-4'>
-					<Button className='w-full sm:w-36' variant={'secondary'} onClick={pause_all}>
+					<Button className='w-full sm:w-36' variant={'default'} onClick={pause_all}>
 						Pause all
 					</Button>
 
@@ -164,6 +163,32 @@ export default function Home() {
 					<div className='flex flex-col '>
 						<p className={header}>Nature</p>
 						<div className={section}>
+							<SoundItem
+								audio_id='beach_audio'
+								audio_title='Beach'
+								playing={is_playing('beach_audio')}
+								volume={volume['beach_audio']}
+								toggle_audio={toggle_audio}
+								set_item_volume={manual_set_item_volume}
+							/>
+
+							<SoundItem
+								audio_id='fireplace_audio'
+								audio_title='Fireplace'
+								playing={is_playing('fireplace_audio')}
+								volume={volume['fireplace_audio']}
+								toggle_audio={toggle_audio}
+								set_item_volume={manual_set_item_volume}
+							/>
+
+							<SoundItem
+								audio_id='forest_stream_audio'
+								audio_title='Forest Stream'
+								playing={is_playing('forest_stream_audio')}
+								volume={volume['forest_stream_audio']}
+								toggle_audio={toggle_audio}
+								set_item_volume={manual_set_item_volume}
+							/>
 							<SoundItem
 								audio_id='rain_audio'
 								audio_title='Rain'
@@ -180,21 +205,42 @@ export default function Home() {
 								toggle_audio={toggle_audio}
 								set_item_volume={manual_set_item_volume}
 							/>
+						</div>
+					</div>
 
+					<div className='flex flex-col '>
+						<p className={header}>Animals</p>
+						<div className={section}>
 							<SoundItem
-								audio_id='fireplace_audio'
-								audio_title='Fireplace'
-								playing={is_playing('fireplace_audio')}
-								volume={volume['fireplace_audio']}
+								audio_id='cicada_audio'
+								audio_title='Cicadas'
+								playing={is_playing('cicada_audio')}
+								volume={volume['cicada_audio']}
 								toggle_audio={toggle_audio}
 								set_item_volume={manual_set_item_volume}
 							/>
-
 							<SoundItem
 								audio_id='crickets_audio'
 								audio_title='Crickets'
 								playing={is_playing('crickets_audio')}
 								volume={volume['crickets_audio']}
+								toggle_audio={toggle_audio}
+								set_item_volume={manual_set_item_volume}
+							/>
+							<SoundItem
+								audio_id='nightingale_audio'
+								audio_title='Nightingale'
+								playing={is_playing('nightingale_audio')}
+								volume={volume['nightingale_audio']}
+								toggle_audio={toggle_audio}
+								set_item_volume={manual_set_item_volume}
+							/>
+
+							<SoundItem
+								audio_id='nighttime_audio'
+								audio_title='Night Time'
+								playing={is_playing('nighttime_audio')}
+								volume={volume['nighttime_audio']}
 								toggle_audio={toggle_audio}
 								set_item_volume={manual_set_item_volume}
 							/>
@@ -205,10 +251,36 @@ export default function Home() {
 						<p className={header}>City</p>
 						<div className={section}>
 							<SoundItem
-								audio_id='nyc_subway_audio'
-								audio_title='NYC Subway'
-								playing={is_playing('nyc_subway_audio')}
-								volume={volume['nyc_subway_audio']}
+								audio_id='french_cafe_audio'
+								audio_title='French Café'
+								playing={is_playing('french_cafe_audio')}
+								volume={volume['french_cafe_audio']}
+								toggle_audio={toggle_audio}
+								set_item_volume={manual_set_item_volume}
+							/>
+							<SoundItem
+								audio_id='moscow_subway_audio'
+								audio_title='Moscow Subway'
+								playing={is_playing('moscow_subway_audio')}
+								volume={volume['moscow_subway_audio']}
+								toggle_audio={toggle_audio}
+								set_item_volume={manual_set_item_volume}
+							/>
+
+							<SoundItem
+								audio_id='seoul_cafe_audio'
+								audio_title='Seoul Café'
+								playing={is_playing('seoul_cafe_audio')}
+								volume={volume['seoul_cafe_audio']}
+								toggle_audio={toggle_audio}
+								set_item_volume={manual_set_item_volume}
+							/>
+
+							<SoundItem
+								audio_id='yamanote_line_audio'
+								audio_title='Yamanote Line'
+								playing={is_playing('yamanote_line_audio')}
+								volume={volume['yamanote_line_audio']}
 								toggle_audio={toggle_audio}
 								set_item_volume={manual_set_item_volume}
 							/>
@@ -220,19 +292,25 @@ export default function Home() {
 								toggle_audio={toggle_audio}
 								set_item_volume={manual_set_item_volume}
 							/>
+						</div>
+					</div>
+
+					<div>
+						<p className={header}>Miscellaneous</p>
+						<div className={section}>
 							<SoundItem
-								audio_id='yamanote_line_audio'
-								audio_title='Yamanote Line'
-								playing={is_playing('yamanote_line_audio')}
-								volume={volume['yamanote_line_audio']}
+								audio_id='brown_noise_audio'
+								audio_title='Brown Noise'
+								playing={is_playing('brown_noise_audio')}
+								volume={volume['brown_noise_audio']}
 								toggle_audio={toggle_audio}
 								set_item_volume={manual_set_item_volume}
 							/>
 							<SoundItem
-								audio_id='seoul_cafe_audio'
-								audio_title='Seoul Cafe'
-								playing={is_playing('seoul_cafe_audio')}
-								volume={volume['seoul_cafe_audio']}
+								audio_id='white_noise_audio'
+								audio_title='White Noise'
+								playing={is_playing('white_noise_audio')}
+								volume={volume['white_noise_audio']}
 								toggle_audio={toggle_audio}
 								set_item_volume={manual_set_item_volume}
 							/>
@@ -246,7 +324,7 @@ export default function Home() {
 					<a
 						href='https://gabrielchantayan.com'
 						target='_blank'
-						className=' underline underline-offset-2 hover:underline-offset-4'>
+						className=' underline underline-offset-2 hover:underline-offset-4 transition-all duration-250 ease-in-out'>
 						Gabe Chantayan
 					</a>
 				</p>
@@ -254,7 +332,7 @@ export default function Home() {
 				<a
 					href='https://github.com/gabrielchantayan/sons/blob/main/CHANGELOG.MD'
 					target='_blank'
-					className=' underline underline-offset-2 hover:underline-offset-4'>
+					className=' underline underline-offset-2 hover:underline-offset-4 transition-all duration-250 ease-in-out'>
 					Changelog
 				</a>
 			</footer>
