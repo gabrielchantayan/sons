@@ -1,5 +1,10 @@
 # Changelog
 
+## 2024 December 23 (v6.0)
+- Added master volume slider
+- Fixed UI opacity
+- Default run port now 3006
+
 ## 2024 December 23 (v5.1)
 - Renamed cicada_audio to cicadas_audio
 - Added breathing background

@@ -4,9 +4,18 @@
 
 French for "Sounds", sons is a nextjs app for background audio for your day.
 
-## Todo
-- Add more sounds
-- Pretty up the website
-- Get audio meandering working
-- Clean up code
-- Abstract audio logic into react components
+## Features
+
+- Play sounds
+
+## Installation
+
+Copy the directory
+
+`npm install && npm run build`
+
+Then to start
+
+`npm run start`
+
+Go to `localhost:3006`
