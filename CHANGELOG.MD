@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024 December 23 (v5.1)
+- Renamed cicada_audio to cicadas_audio
+- Added breathing background
+
 ## 2024 December 23 (v5.0)
 - Readded NYC Subway audio
 - Added animations to UI

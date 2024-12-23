@@ -1,6 +1,6 @@
 {
   "name": "sons",
-  "version": "4.0",
+  "version": "5.1",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -56,14 +56,14 @@ const config: Config = {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)',
 			},
-			keyframes: {
-				shrink_expand: {
-					'0%, 100%': { transform: 'scale(1)', easing: 'ease-in-out' },
-					'50%': { transform: 'scale(0.9)', easing: 'ease-in-out' },
-				},
-			},
 			animation: {
-				shrink_expand: 'shrinkExpand 0.5s ease-in-out',
+				breathing: 'breathing 40s ease-in-out infinite',
+			},
+			keyframes: {
+				breathing: {
+					'0%, 100%': { opacity: '0' },
+					'50%': { opacity: '1' },
+				},
 			},
 		},
 	},

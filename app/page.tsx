@@ -25,7 +25,7 @@ const SoundItem = ({
 }) => {
 	return (
 		<div className='flex flex-col sm:flex-row flex gap-4 sm:items-center'>
-			<Button variant={'glass'} className='w-full sm:w-56' onClick={() => toggle_audio(audio_id)}>
+			<Button variant={'glass'} className={`w-full sm:w-56 ${playing ? 'bg-white/70' : ''}`} onClick={() => toggle_audio(audio_id)}>
 				{audio_title} {playing ? <PauseIcon /> : <PlayIcon />}
 			</Button>
 			<audio id={audio_id} src={`/${audio_id}.mp3`} loop></audio>
@@ -57,6 +57,8 @@ export default function Home() {
 	const [meander_initial_volumes, set_meander_initial_volumes] = useState<Record<string, number>>({});
 
 	// const [meander_timers, set_meander_timers] = useState({});
+
+	// const [master_volume, set_master_volume] = useState(1);
 
 	const toggle_audio = (audio_id: string) => {
 		// Play the sound here
@@ -123,6 +125,14 @@ export default function Home() {
 	// 	}
 	// };
 
+	// const meander_volume = () => {
+	// 	if (meander) {
+	// 		set_meander(false);
+	// 	} else {
+	// 		set_meander(true);
+	// 	}
+	// };
+
 	const pause_all = () => {
 		const temp_audio = { ...playing };
 
@@ -144,7 +154,7 @@ export default function Home() {
 	};
 
 	return (
-		<div className='grid grid-rows-[1fr_20px]  min-h-screen p-8 pt-15 pb-10 gap-8 sm:p-20 sm:pb-10 font-[family-name:var(--font-geist-sans)]'>
+		<div className='grid grid-rows-[1fr_20px]  min-h-screen p-8 pt-15 pb-10 gap-12 sm:p-20 sm:pb-10 font-[family-name:var(--font-geist-sans)]'>
 			<main className='flex flex-col '>
 				<h1 className='sm:text-6xl text-3xl font-bold font-[family-name:var(--font-pp-editorial-new-ultralight)]'>
 					sounds.gabech.com
@@ -156,37 +166,46 @@ export default function Home() {
 						Pause all
 					</Button>
 
-					{/* <Button className='w-48' variant={'secondary'} onClick={meander_volume}>
+					{/* <Button className='w-48' variant={'glass'} onClick={meander_volume}>
 						{meander ? 'Stop meandering' : 'Start meandering'}
 					</Button> */}
 				</div>
 
-				{
-					sounds.map((category) => {
-						return (
-							<div key={category.name} className='mt-8 flex flex-col'>
-								<p className={header}>{category.name}</p>
-								<div className={section}>
-									{category.sounds.map((sound) => {
-										return (
-											<SoundItem
-												key={sound.audio_id}
-												audio_id={sound.audio_id}
-												audio_title={sound.name}
-												playing={is_playing(sound.audio_id)}
-												volume={volume[sound.audio_id]}
-												toggle_audio={toggle_audio}
-												set_item_volume={manual_set_item_volume}
-											/>
-										);
-									})}
-								</div>
+				{/* <div className='mt-4 flex gap-4 w-full sm:w-96'>
+					<p>Master volume</p>
+					<Slider
+						value={[master_volume]}
+						onValueChange={(v) => {
+							set_master_volume(v[0]);
+						}}
+						step={0.01}
+						min={0}
+						max={1}
+					/>
+				</div> */}
+
+				{sounds.map((category) => {
+					return (
+						<div key={category.name} className='mt-8 flex flex-col'>
+							<p className={header}>{category.name}</p>
+							<div className={section}>
+								{category.sounds.map((sound) => {
+									return (
+										<SoundItem
+											key={sound.audio_id}
+											audio_id={sound.audio_id}
+											audio_title={sound.name}
+											playing={is_playing(sound.audio_id)}
+											volume={volume[sound.audio_id]}
+											toggle_audio={toggle_audio}
+											set_item_volume={manual_set_item_volume}
+										/>
+									);
+								})}
 							</div>
-						);
-					})
-				}
-
-
+						</div>
+					);
+				})}
 			</main>
 			<footer className='flex flex-row gap-4 text-sm mt-6 sm:mt-0 items-center justify-center sm:items-start sm:justify-start'>
 				<p className='text-sm'>
@@ -206,6 +225,7 @@ export default function Home() {
 					Changelog
 				</a>
 			</footer>
-		</div>
+
+			</div>
 	);
 }

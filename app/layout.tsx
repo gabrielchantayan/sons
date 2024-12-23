@@ -40,6 +40,8 @@ export default function RootLayout({
 		<html lang='en'>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} ${ppEditorialNewRegular.variable} ${ppEditorialNewUltralight.variable} antialiased bg-gradient-to-r from-[#E3FDF5] to-[#FFE6FA] `}>
+				<div className='bg-gradient-to-r from-[#ddd6f3] to-[#faaca8] fixed inset-0 -z-10 w-screen h-screen h-full animate-breathing'></div>
+				{/* <div className='bg-gradient-to-r from-[#e3eeff] to-[#f3e7e9] fixed inset-0 -z-10 w-screen h-screen h-full animate-breathing'></div> */}
 				<ThemeProvider attribute='class' defaultTheme='light' enableSystem disableTransitionOnChange>
 					{children}
 				</ThemeProvider>
