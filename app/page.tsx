@@ -4,8 +4,8 @@ import { Slider } from '@/components/ui/slider';
 import { PauseIcon, PlayIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 
-const header = 'text-2xl font-bold mb-2 font-[family-name:var(--font-pp-editorial-new-ultralight)]';
-const section = 'flex flex-col gap-4';
+const header = 'text-2xl font-bold mb-1 font-[family-name:var(--font-pp-editorial-new-ultralight)]';
+const section = 'flex flex-col gap-4 sm:gap-2';
 
 const SoundItem = ({
 	audio_id,
@@ -24,7 +24,7 @@ const SoundItem = ({
 }) => {
 	return (
 		<div className='flex flex-col sm:flex-row flex gap-4 sm:items-center'>
-			<Button variant={'default'} className='w-full sm:w-56' onClick={() => toggle_audio(audio_id)}>
+			<Button variant={'glass'} className='w-full sm:w-56' onClick={() => toggle_audio(audio_id)}>
 				{audio_title} {playing ? <PauseIcon /> : <PlayIcon />}
 			</Button>
 			<audio id={audio_id} src={`/${audio_id}.mp3`} loop></audio>
@@ -150,7 +150,7 @@ export default function Home() {
 				<p className='sm:mt-1 mt-2 text-lg sm:text-2xl'>Background music for your life</p>
 
 				<div className='mt-4 flex gap-4'>
-					<Button className='w-full sm:w-36' variant={'default'} onClick={pause_all}>
+					<Button className='w-full sm:w-36' variant={'glass'} onClick={pause_all}>
 						Pause all
 					</Button>
 
