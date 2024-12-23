@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 import { PauseIcon, PlayIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
+import sounds from './sounds';
 
 const header = 'text-2xl font-bold mb-1 font-[family-name:var(--font-pp-editorial-new-ultralight)]';
 const section = 'flex flex-col gap-4 sm:gap-2';
@@ -28,19 +29,20 @@ const SoundItem = ({
 				{audio_title} {playing ? <PauseIcon /> : <PlayIcon />}
 			</Button>
 			<audio id={audio_id} src={`/${audio_id}.mp3`} loop></audio>
-			{playing && (
-				<div className='w-full sm:w-96 mb-4 sm:mb-0'>
-					<Slider
-						value={[volume || 0.75]}
-						onValueChange={(v) => {
-							set_item_volume(audio_id, v[0]);
-						}}
-						step={0.01}
-						min={0}
-						max={1}
-					/>
-				</div>
-			)}
+			<div
+				className={`transition-all ${
+					playing ? 'w-full sm:w-96 opacity-100  duration-150' : 'w-0 opacity-0 duration-150'
+				} mb-4 sm:mb-0  ease-in-out`}>
+				<Slider
+					value={[volume || 0.75]}
+					onValueChange={(v) => {
+						set_item_volume(audio_id, v[0]);
+					}}
+					step={0.01}
+					min={0}
+					max={1}
+				/>
+			</div>
 		</div>
 	);
 };
@@ -159,164 +161,32 @@ export default function Home() {
 					</Button> */}
 				</div>
 
-				<div className='mt-8 flex flex-col gap-8'>
-					<div className='flex flex-col '>
-						<p className={header}>Nature</p>
-						<div className={section}>
-							<SoundItem
-								audio_id='beach_audio'
-								audio_title='Beach'
-								playing={is_playing('beach_audio')}
-								volume={volume['beach_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
+				{
+					sounds.map((category) => {
+						return (
+							<div key={category.name} className='mt-8 flex flex-col'>
+								<p className={header}>{category.name}</p>
+								<div className={section}>
+									{category.sounds.map((sound) => {
+										return (
+											<SoundItem
+												key={sound.audio_id}
+												audio_id={sound.audio_id}
+												audio_title={sound.name}
+												playing={is_playing(sound.audio_id)}
+												volume={volume[sound.audio_id]}
+												toggle_audio={toggle_audio}
+												set_item_volume={manual_set_item_volume}
+											/>
+										);
+									})}
+								</div>
+							</div>
+						);
+					})
+				}
 
-							<SoundItem
-								audio_id='fireplace_audio'
-								audio_title='Fireplace'
-								playing={is_playing('fireplace_audio')}
-								volume={volume['fireplace_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
 
-							<SoundItem
-								audio_id='forest_stream_audio'
-								audio_title='Forest Stream'
-								playing={is_playing('forest_stream_audio')}
-								volume={volume['forest_stream_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-							<SoundItem
-								audio_id='rain_audio'
-								audio_title='Rain'
-								playing={is_playing('rain_audio')}
-								volume={volume['rain_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-							<SoundItem
-								audio_id='thunder_audio'
-								audio_title='Thunder'
-								playing={is_playing('thunder_audio')}
-								volume={volume['thunder_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-						</div>
-					</div>
-
-					<div className='flex flex-col '>
-						<p className={header}>Animals</p>
-						<div className={section}>
-							<SoundItem
-								audio_id='cicada_audio'
-								audio_title='Cicadas'
-								playing={is_playing('cicada_audio')}
-								volume={volume['cicada_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-							<SoundItem
-								audio_id='crickets_audio'
-								audio_title='Crickets'
-								playing={is_playing('crickets_audio')}
-								volume={volume['crickets_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-							<SoundItem
-								audio_id='nightingale_audio'
-								audio_title='Nightingale'
-								playing={is_playing('nightingale_audio')}
-								volume={volume['nightingale_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-
-							<SoundItem
-								audio_id='nighttime_audio'
-								audio_title='Night Time'
-								playing={is_playing('nighttime_audio')}
-								volume={volume['nighttime_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-						</div>
-					</div>
-
-					<div>
-						<p className={header}>City</p>
-						<div className={section}>
-							<SoundItem
-								audio_id='french_cafe_audio'
-								audio_title='French Café'
-								playing={is_playing('french_cafe_audio')}
-								volume={volume['french_cafe_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-							<SoundItem
-								audio_id='moscow_subway_audio'
-								audio_title='Moscow Subway'
-								playing={is_playing('moscow_subway_audio')}
-								volume={volume['moscow_subway_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-
-							<SoundItem
-								audio_id='seoul_cafe_audio'
-								audio_title='Seoul Café'
-								playing={is_playing('seoul_cafe_audio')}
-								volume={volume['seoul_cafe_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-
-							<SoundItem
-								audio_id='yamanote_line_audio'
-								audio_title='Yamanote Line'
-								playing={is_playing('yamanote_line_audio')}
-								volume={volume['yamanote_line_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-							<SoundItem
-								audio_id='yerevanskoe_metro_audio'
-								audio_title='Yerevan Subway'
-								playing={is_playing('yerevanskoe_metro_audio')}
-								volume={volume['yerevanskoe_metro_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-						</div>
-					</div>
-
-					<div>
-						<p className={header}>Miscellaneous</p>
-						<div className={section}>
-							<SoundItem
-								audio_id='brown_noise_audio'
-								audio_title='Brown Noise'
-								playing={is_playing('brown_noise_audio')}
-								volume={volume['brown_noise_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-							<SoundItem
-								audio_id='white_noise_audio'
-								audio_title='White Noise'
-								playing={is_playing('white_noise_audio')}
-								volume={volume['white_noise_audio']}
-								toggle_audio={toggle_audio}
-								set_item_volume={manual_set_item_volume}
-							/>
-						</div>
-					</div>
-				</div>
 			</main>
 			<footer className='flex flex-row gap-4 text-sm mt-6 sm:mt-0 items-center justify-center sm:items-start sm:justify-start'>
 				<p className='text-sm'>

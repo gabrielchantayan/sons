@@ -1,5 +1,14 @@
 # Changelog
 
+## 2024 December 23 (v5.0)
+- Readded NYC Subway audio
+- Added animations to UI
+- Cleaned up UI some more
+- Renamed categories
+    - Animals -> Wildlife
+    - Miscellaneous -> Ambient
+- BACKEND: Moved sound data to `sounds.tsx`, UI will now dynamically generate from that file
+
 ## 2024 December 22 (v4.0)
 - Added six more sounds:
 
