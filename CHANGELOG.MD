@@ -1,5 +1,11 @@
 # Changelog
 
+## 2025 January 6 (v7.0)
+- Attempt to fix audio loop gap
+- Added two more sounds:
+    - Cars passing
+    - Dutch Neighborhood
+
 ## 2024 December 23 (v6.0)
 - Added master volume slider
 - Fixed UI opacity

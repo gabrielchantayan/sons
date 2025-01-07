@@ -49,6 +49,14 @@ const sounds = [
 		name: 'City',
 		sounds: [
 			{
+				name: 'Cars outside appartment',
+				audio_id: 'cars_passing_audio',
+			},
+			{
+				name: 'Dutch Neighborhood',
+				audio_id: 'dutch_neighborhood_audio',
+			},
+			{
 				name: 'French Café',
 				audio_id: 'french_cafe_audio',
 			},

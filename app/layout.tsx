@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from '@/theme-provider';
+import Script from 'next/script';
 
 
 const geistSans = localFont({
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
   description: "Background music for your life",
 };
 
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -38,6 +40,13 @@ export default function RootLayout({
 }>) {
   return (
 		<html lang='en'>
+			<Script
+				defer
+				src='Umami URL'
+				data-website-id='Umami ID'
+			/>
+			
+
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} ${ppEditorialNewRegular.variable} ${ppEditorialNewUltralight.variable} antialiased bg-gradient-to-r from-[#E3FDF5] to-[#FFE6FA] `}>
 				<div className='bg-gradient-to-r from-[#ddd6f3] to-[#faaca8] fixed inset-0 -z-10 w-screen h-screen h-full animate-breathing'></div>

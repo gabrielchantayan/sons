@@ -5,7 +5,7 @@ import { PauseIcon, PlayIcon } from '@radix-ui/react-icons';
 import { useState } from 'react';
 import sounds from './sounds';
 
-const version = '6.0';
+const version = '7.0';
 
 const header = 'text-2xl font-bold mb-1 font-[family-name:var(--font-pp-editorial-new-ultralight)]';
 const section = 'flex flex-col gap-4 sm:gap-2';
@@ -30,10 +30,11 @@ const SoundItem = ({
 			<Button
 				variant={'glass'}
 				className={`w-full sm:w-56 ${playing ? 'bg-white/70' : ''}`}
-				onClick={() => toggle_audio(audio_id)}>
+				onClick={() => toggle_audio(audio_id)}
+				data-umami-event={`"${audio_title}" ${playing ? 'paused' : 'played'}`}>
 				{audio_title} {playing ? <PauseIcon /> : <PlayIcon />}
 			</Button>
-			<audio id={audio_id} src={`/${audio_id}.mp3`} loop></audio>
+			<audio id={audio_id} src={`/${audio_id}.ogg`} loop></audio>
 			<div
 				className={`transition-all ${
 					playing ? 'w-full sm:w-96 opacity-100  duration-150' : 'w-0 opacity-0 duration-150'
@@ -46,6 +47,7 @@ const SoundItem = ({
 					step={0.01}
 					min={0}
 					max={1}
+					data-umami-event={`"${audio_title}" volume changed`}
 				/>
 			</div>
 		</div>
@@ -131,11 +133,16 @@ export default function Home() {
 						step={0.01}
 						min={0}
 						max={1}
+						data-umami-event='Changed master volume'
 					/>
 				</div>
 
 				<div className='mt-4 flex gap-4'>
-					<Button className='w-full sm:w-36' variant={'glass'} onClick={pause_all}>
+					<Button
+						className='w-full sm:w-36'
+						variant={'glass'}
+						onClick={pause_all}
+						data-umami-event='Paused all sounds'>
 						Pause all
 					</Button>
 				</div>
@@ -169,15 +176,18 @@ export default function Home() {
 					<a
 						href='https://gabrielchantayan.com'
 						target='_blank'
-						className=' underline underline-offset-2 hover:underline-offset-4 transition-all duration-250 ease-in-out'>
+						className=' underline underline-offset-2 hover:underline-offset-4 transition-all duration-250 ease-in-out'
+						data-umami-event='Clicked portfolio link'>
 						Gabe Chantayan
-					</a>{' with ❤️'}
+					</a>
+					{' with ❤️'}
 				</p>
 				<p className='font-bold'>•</p>
 				<a
 					href='https://github.com/gabrielchantayan/sons/blob/main/CHANGELOG.MD'
 					target='_blank'
-					className=' underline underline-offset-2 hover:underline-offset-4 transition-all duration-250 ease-in-out'>
+					className=' underline underline-offset-2 hover:underline-offset-4 transition-all duration-250 ease-in-out'
+					data-umami-event='Viewed changelog'>
 					Changelog {`(v${version})`}
 				</a>
 			</footer>
