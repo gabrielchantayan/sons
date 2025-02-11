@@ -1,5 +1,11 @@
 # Changelog
 
+## 2025 February 11 (v8.0)
+- Add OGG support
+- Switched backend to Howler.JS
+- Modified background gradient
+- Fix sound looping issues
+
 ## 2025 January 6 (v7.0)
 - Attempt to fix audio loop gap
 - Added two more sounds:

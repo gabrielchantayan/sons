@@ -9,6 +9,7 @@ French for "Sounds", sons is a nextjs app for background audio for your day.
 - Play sounds
 
 ## Installation
+- Clone the repo `git clone https://github.com/gabech/sons.git`
 
 Copy the directory
 

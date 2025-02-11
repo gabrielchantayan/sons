@@ -42,14 +42,14 @@ export default function RootLayout({
 		<html lang='en'>
 			<Script
 				defer
-				src='Umami URL'
-				data-website-id='Umami ID'
+				src='https://nayem.gabech.com/script.js'
+				data-website-id='47c791aa-9064-4762-9ebe-50b4b1a6c357'
 			/>
-			
 
 			<body
-				className={`${geistSans.variable} ${geistMono.variable} ${ppEditorialNewRegular.variable} ${ppEditorialNewUltralight.variable} antialiased bg-gradient-to-r from-[#E3FDF5] to-[#FFE6FA] `}>
+				className={`${geistSans.variable} ${geistMono.variable} ${ppEditorialNewRegular.variable} ${ppEditorialNewUltralight.variable} antialiased bg-gradient-to-r to-[#ff9a9e] from-[#fad0c4] `}>
 				<div className='bg-gradient-to-r from-[#ddd6f3] to-[#faaca8] fixed inset-0 -z-10 w-screen h-screen h-full animate-breathing'></div>
+				{/* background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%); */}
 				{/* <div className='bg-gradient-to-r from-[#e3eeff] to-[#f3e7e9] fixed inset-0 -z-10 w-screen h-screen h-full animate-breathing'></div> */}
 				<ThemeProvider attribute='class' defaultTheme='light' enableSystem disableTransitionOnChange>
 					{children}
